@@ -47,11 +47,28 @@ filegroup(
 cc_toolchain_suite(
     name = "toolchain",
     toolchains = {
+        "aarch64": ":cc-compiler-aarch64",
         "k8|clang": ":cc-compiler-k8",
         "k8": ":cc-compiler-k8",
         "armeabi-v7a|compiler": ":cc-compiler-armeabi-v7a",
         "armeabi-v7a": ":cc-compiler-armeabi-v7a",
     },
+)
+
+cc_toolchain(
+    name = "cc-compiler-aarch64",
+    toolchain_identifier = "local",
+    toolchain_config = ":local",
+    all_files = ":compiler_deps",
+    ar_files = ":compiler_deps",
+    as_files = ":compiler_deps",
+    compiler_files = ":compiler_deps",
+    dwp_files = ":empty",
+    linker_files = ":compiler_deps",
+    objcopy_files = ":empty",
+    strip_files = ":empty",
+    supports_param_files = 1,
+    module_map = ":module.modulemap",
 )
 
 cc_toolchain(

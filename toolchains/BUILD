@@ -12,6 +12,15 @@ platform(
 )
 
 platform(
+    name = "rbe_linux_clang_platform_aarch64",
+    exec_properties = create_rbe_exec_properties_dict(
+        docker_add_capabilities = "SYS_PTRACE,NET_RAW,NET_ADMIN",
+        docker_network = "standard",
+    ),
+    parents = ["//toolchains/configs/linux/clang/config:platform_aarch64"],
+)
+
+platform(
     name = "rbe_linux_clang_libcxx_platform",
     exec_properties = create_rbe_exec_properties_dict(
         docker_add_capabilities = "SYS_PTRACE,NET_RAW,NET_ADMIN",

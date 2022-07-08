@@ -61,3 +61,17 @@ platform(
         "OSFamily": "Linux",
     },
 )
+
+platform(
+    name = "platform_aarch64",
+    parents = ["@local_config_platform//:host"],
+    constraint_values = [
+        "@bazel_tools//platforms:linux",
+        "@bazel_tools//platforms:aarch64",
+        "@bazel_tools//tools/cpp:clang",
+    ],
+    exec_properties = {
+        "container-image": "docker://gcr.io/envoy-ci/envoy-build@sha256:e9e5c01ebb01974b200b45d875e11cc26814ccb25dce8f7d855922de3836391c",
+        "OSFamily": "Linux",
+    },
+)
